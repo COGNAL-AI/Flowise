@@ -32,6 +32,6 @@ jobs:
 
       - name: Push Changes
         env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          git push https://${PAT_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
+          git push https://${GH_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
