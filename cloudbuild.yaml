@@ -1,0 +1,29 @@
+steps:
+  # Step 1: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build', '-t', 'gcr.io/mvp-creation/flowise:dev', '.'
+    ]
+
+  # Step 2: Push the Docker image to GCR
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'push', 'gcr.io/mvp-creation/flowise:dev'
+    ]
+
+  # Step 3: Deploy the Docker image to Google Kubernetes Engine (GKE)
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args:
+    - 'set'
+    - 'image'
+    - 'deployment/flowise-private-deployment'
+    - 'flowise-sha256-1=gcr.io/mvp-creation/flowise:dev'
+    env:
+    - 'CLOUDSDK_COMPUTE_ZONE=europe-west6'  # Set your zone here
+    - 'CLOUDSDK_CONTAINER_CLUSTER=flowise-cluster-private-access'  # Set your GKE cluster name here
+
+# Cloud Build options to enable Cloud Logging
+options:
+  logging: CLOUD_LOGGING_ONLY  # Send logs only to Cloud Logging
+
+# Good luck charm :)
