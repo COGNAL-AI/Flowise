@@ -17,7 +17,7 @@ steps:
     - 'set'
     - 'image'
     - 'deployment/flowise'
-    - 'flowise-sha256-1=gcr.io/flowise-dev-pipeline/flowise:dev'
+    - 'flowise=gcr.io/flowise-dev-pipeline/flowise:dev'
     env:
     - 'CLOUDSDK_COMPUTE_ZONE=europe-west1'  # Set your zone here
     - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-flowise-october-2024'  # Set your GKE cluster name here
