@@ -20,7 +20,7 @@ steps:
     - 'flowise=gcr.io/flowise-dev-pipeline/flowise:dev'
     env:
     - 'CLOUDSDK_COMPUTE_ZONE=europe-west1'  # Set your zone here
-    - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-flowise-october-2024'  # Set your GKE cluster name here
+    - 'CLOUDSDK_CONTAINER_CLUSTER=flo-cluster-2024-october'  # Set your GKE cluster name here
 
   # Step 4: Restart the deployment to ensure the new image is used
   - name: 'gcr.io/cloud-builders/kubectl'
@@ -30,7 +30,7 @@ steps:
     - 'deployment/flowise'
     env:
     - 'CLOUDSDK_COMPUTE_ZONE=europe-west1'  # Set your zone here
-    - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-flowise-october-2024'  # Set your GKE cluster name here
+    - 'CLOUDSDK_CONTAINER_CLUSTER=flo-cluster-2024-october'  # Set your GKE cluster name here
 
 # Cloud Build options to enable Cloud Logging
 options:
