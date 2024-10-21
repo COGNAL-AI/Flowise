@@ -2,7 +2,7 @@ name: Sync Fork Upstream
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # Run every day at 6AM UTC
+    - cron: '0 */6 * * *'  # Run every day at 6AM UTC
   workflow_dispatch:  # Allows manual trigger
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
       - name: Sync and merge upstream repository with your current repository
         uses: dabreadman/sync-upstream-repo@v1.3.0
         with:
-          # URL of gitHub public upstream repo
+          # URL of GitHub public upstream repo
           upstream_repo: "https://github.com/FlowiseAI/Flowise.git"
           # Branch to merge from upstream (defaults to downstream branch)
           upstream_branch: main
