@@ -22,17 +22,7 @@ steps:
     - 'CLOUDSDK_COMPUTE_ZONE=europe-west1'
     - 'CLOUDSDK_CONTAINER_CLUSTER=flo-cluster-2024-october'
 
-  # Step 4: Restart the deployment to ensure the new image is used
-  - name: 'gcr.io/cloud-builders/kubectl'
-    args:
-    - 'rollout'
-    - 'restart'
-    - 'deployment/flowise'
-    env:
-    - 'CLOUDSDK_COMPUTE_ZONE=europe-west1'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=flo-cluster-2024-october'
-
-# Step 5: Check the rollout status to ensure it's complete
+  # Step 4: Rollout the update and ensure the old pod releases the PVC before the new one starts
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
     - 'rollout'
